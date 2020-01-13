@@ -1,0 +1,5 @@
+Projektbeskrivelse 
+
+Features:  Jeg har tænkt mig at lave en app der har mange features 
+
+Platform:  Android studio
