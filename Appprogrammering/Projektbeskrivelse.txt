@@ -1,0 +1,5 @@
+Projektbeskrivelse 
+
+Features:  knap der skifter view, knap der skifter til dark theme, visning af brugerinput, knap der laver en notification.
+
+Platform:  Android studio
