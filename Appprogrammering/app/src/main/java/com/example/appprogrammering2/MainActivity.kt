@@ -1,5 +1,6 @@
 package com.example.appprogrammering2
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
