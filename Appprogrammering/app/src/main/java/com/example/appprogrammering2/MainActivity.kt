@@ -5,17 +5,26 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val inputButton = findViewById<Button>(R.id.sendButton)
         val darkButton = findViewById<Button>(R.id.button2)
         val background = findViewById<View>(R.id.frontPage)
+        val inputText = findViewById<View>(R.id.inputText) as TextView
+        val textField = findViewById<View>(R.id.textField) as TextView
 
         // Counter to count button click
         var counter = 0
+
+        fun updateText() {
+            val currentText = textField.text.toString()
+            textField.text = currentText + "\n" +inputText.text.toString()
+        }
 
         fun switchTheme() {
             if (counter == 0)
@@ -32,6 +41,11 @@ class MainActivity : AppCompatActivity() {
 
         darkButton.setOnClickListener {
             switchTheme()
+        }
+
+        inputButton.setOnClickListener {
+            updateText()
+            inputText.text = ""
         }
     }
 
