@@ -4,6 +4,7 @@ Features:
 knap der skifter til dark theme (done)
 Visning af bruger input (done)
 knap der skifter view, (done)
-knap der laver en notification.
+knap der laver en notification. (done)
+drobdown menu button.
 
 Platform:  Android studio
