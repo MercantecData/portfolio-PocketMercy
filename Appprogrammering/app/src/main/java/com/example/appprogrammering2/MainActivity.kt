@@ -1,5 +1,6 @@
 package com.example.appprogrammering2
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +13,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val intent = Intent(this, secondActivity::class.java)
+        val activityButton = findViewById<Button>(R.id.activityButton)
         val inputButton = findViewById<Button>(R.id.sendButton)
         val darkButton = findViewById<Button>(R.id.button2)
         val background = findViewById<View>(R.id.frontPage)
@@ -46,6 +49,10 @@ class MainActivity : AppCompatActivity() {
         inputButton.setOnClickListener {
             updateText()
             inputText.text = ""
+        }
+
+        activityButton.setOnClickListener {
+            startActivity(intent)
         }
     }
 
