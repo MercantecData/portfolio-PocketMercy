@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">App programmering2</string>
     <string name="darkmode">Darkmode</string>
+    <string-array name="color_array">
+        <item>Black</item>
+        <item>Blue</item>
+        <item>Red</item>
+        <item>Green</item>
+    </string-array>
 </resources>
