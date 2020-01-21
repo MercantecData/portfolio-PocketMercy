@@ -8,12 +8,22 @@
     android:background="@android:color/white"
     tools:context=".MainActivity">
 
+
+    <Spinner
+        android:id="@+id/color_spinner"
+        android:layout_width="119dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/inputText"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintStart_toEndOf="@+id/activityButton" />
+
     <Button
         android:id="@+id/button2"
         android:layout_width="105dp"
         android:layout_height="54dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
         android:background="@android:color/holo_blue_dark"
         android:text="@string/darkmode"
         android:textAlignment="center"
@@ -61,8 +71,8 @@
         android:id="@+id/activityButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="108dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginEnd="156dp"
+        android:layout_marginBottom="32dp"
         android:text="Second page"
         app:layout_constraintBottom_toTopOf="@+id/inputText"
         app:layout_constraintEnd_toStartOf="@+id/button2" />
