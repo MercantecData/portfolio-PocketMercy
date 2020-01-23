@@ -4,16 +4,20 @@ package com.example.appprogrammering2
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
-import android.content.Intent
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorManager
+import android.hardware.SensorEventListener
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import kotlinx.android.synthetic.main.activity_second.*
 
-class secondActivity : AppCompatActivity() {
+
+class secondActivity : AppCompatActivity()  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +25,8 @@ class secondActivity : AppCompatActivity() {
         val channelID = "testapp" //notification channel id
 
         var counter = 0
+
+        //Notification stuff
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create the NotificationChannel
             val name = "test"
@@ -33,7 +39,6 @@ class secondActivity : AppCompatActivity() {
             val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(mChannel)
         }
-
         val notifyButton = findViewById<Button>(R.id.notificationButton)
         //build notification
         var builder = NotificationCompat.Builder(this, channelID)
@@ -45,12 +50,14 @@ class secondActivity : AppCompatActivity() {
             finish()
         }
 
-        notifyButton.setOnClickListener{
+        notifyButton.setOnClickListener {
             with(NotificationManagerCompat.from(this)) {
                 // notificationId is a unique int for each notification that you must define
                 notify(counter, builder.build())
             }
             counter++
         }
+
+         
     }
 }
