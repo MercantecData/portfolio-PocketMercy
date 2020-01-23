@@ -8,6 +8,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.widget.Button
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -19,6 +20,8 @@ class secondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         val channelID = "testapp" //notification channel id
+
+        val cameraButton = findViewById<Button>(R.id.camaraButton)
 
         var counter = 0
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -51,6 +54,21 @@ class secondActivity : AppCompatActivity() {
                 notify(counter, builder.build())
             }
             counter++
+        }
+
+        //Start camera when button click
+        camaraButton.setOnClickListener{
+            startCamera()
+        }
+    }
+    val REQUEST_IMAGE_CAPTURE = 1
+
+    //Start camera activity
+    private fun startCamera() {
+        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
+            takePictureIntent.resolveActivity(packageManager)?.also {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+            }
         }
     }
 }
