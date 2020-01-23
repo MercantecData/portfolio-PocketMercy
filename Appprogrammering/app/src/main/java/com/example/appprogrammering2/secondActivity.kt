@@ -3,25 +3,26 @@ package com.example.appprogrammering2
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.Button
+import android.widget.TextView
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import kotlinx.android.synthetic.main.activity_second.*
 
 class secondActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         val channelID = "testapp" //notification channel id
 
         val cameraButton = findViewById<Button>(R.id.camaraButton)
+        val titleText = findViewById<TextView>(R.id.titleText)
+        val brodText = findViewById<TextView>(R.id.descriptionText)
 
         var counter = 0
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -38,26 +39,32 @@ class secondActivity : AppCompatActivity() {
         }
 
         val notifyButton = findViewById<Button>(R.id.notificationButton)
-        //build notification
-        var builder = NotificationCompat.Builder(this, channelID)
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle("Tests notification")
-            .setContentText("Dette er en test")
+        fun notifyBuilder(text:String, title:String): NotificationCompat.Builder
+        {
+            //build notification
+            var builder = NotificationCompat.Builder(this, channelID)
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setContentTitle(title)
+                .setContentText(text)
+            return builder
+        }
+
+        notifyButton.setOnClickListener{
+            var titleContent = titleText.text.toString()
+            var brodTextContent = brodText.text.toString()
+            with(NotificationManagerCompat.from(this)) {
+                // notificationId is a unique int for each notification that you must define
+                notify(counter, notifyBuilder(brodTextContent, titleContent).build())
+            }
+            counter++
+        }
 
         activityButton.setOnClickListener {
             finish()
         }
 
-        notifyButton.setOnClickListener{
-            with(NotificationManagerCompat.from(this)) {
-                // notificationId is a unique int for each notification that you must define
-                notify(counter, builder.build())
-            }
-            counter++
-        }
-
         //Start camera when button click
-        camaraButton.setOnClickListener{
+        cameraButton.setOnClickListener{
             startCamera()
         }
     }
