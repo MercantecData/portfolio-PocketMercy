@@ -18,8 +18,8 @@ class secondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
-        val channelID = "testapp" //notification channel id
 
+        val channelID = "testapp" //notification channel id
         val cameraButton = findViewById<Button>(R.id.camaraButton)
         val titleText = findViewById<TextView>(R.id.titleText)
         val brodText = findViewById<TextView>(R.id.descriptionText)
@@ -59,6 +59,7 @@ class secondActivity : AppCompatActivity() {
             counter++
         }
 
+        //Close activity
         activityButton.setOnClickListener {
             finish()
         }
@@ -68,8 +69,8 @@ class secondActivity : AppCompatActivity() {
             startCamera()
         }
     }
-    val REQUEST_IMAGE_CAPTURE = 1
 
+    val REQUEST_IMAGE_CAPTURE = 1
     //Start camera activity
     private fun startCamera() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->

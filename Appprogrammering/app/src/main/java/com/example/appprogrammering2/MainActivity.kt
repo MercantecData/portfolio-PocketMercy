@@ -1,6 +1,5 @@
 package com.example.appprogrammering2
 
-import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -20,8 +19,8 @@ class MainActivity : AppCompatActivity() {
         val background = findViewById<View>(R.id.frontPage)
         val inputText = findViewById<View>(R.id.inputText) as TextView
         val textField = findViewById<View>(R.id.textField) as TextView
-
         val spinner: Spinner = findViewById(R.id.color_spinner)
+
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter.createFromResource(
             this,
@@ -37,11 +36,13 @@ class MainActivity : AppCompatActivity() {
         // Counter to count button click
         var counter = 0
 
+        //Update function for input textfield
         fun updateText() {
             val currentText = textField.text.toString()
             textField.text = currentText + "\n" +inputText.text.toString()
         }
 
+        //Switch background color
         fun switchTheme() {
             if (counter == 0)
             {
@@ -64,6 +65,7 @@ class MainActivity : AppCompatActivity() {
             inputText.text = ""
         }
 
+        //Switch activity
         activityButton.setOnClickListener {
             startActivity(intent)
         }
