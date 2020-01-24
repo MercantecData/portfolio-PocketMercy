@@ -49,6 +49,7 @@ class secondActivity : AppCompatActivity() {
             return builder
         }
 
+        //Create notification
         notifyButton.setOnClickListener{
             var titleContent = titleText.text.toString()
             var brodTextContent = brodText.text.toString()
